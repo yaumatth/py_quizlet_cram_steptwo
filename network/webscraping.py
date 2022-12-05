@@ -1,22 +1,22 @@
-######look into using SELENIUM
+from selenium import webdriver
+driver = webdriver.Firefox()
 
-import requests
-from bs4 import BeautifulSoup
-import re
-import json
+###search page
+url = "https://quizlet.com/search?query=cell-bio&type=all"
 
-#url = 'https://quizlet.com/search?query=cell-bio&type=sets&useOriginal='
-url = 'https://quizlet.com/748827014/bio-the-cell-flash-cards'
+driver.get(url)
+
+cardset = driver.find_element('xpath', '//a[@class="AssemblyLink AssemblyLink--medium AssemblyLink--title"]')
+cardseturl = cardset.get_attribute('href')
+driver.quit()
 
 
-header = requests.utils.default_headers()['User-Agent']
-headers = {'User-Agent': header}
+###card set page
+driver = webdriver.Firefox()
+driver.get(cardseturl)
 
-r = requests.get(url, headers=headers)
+driver.quit()
 
-soup = str(BeautifulSoup(r.text, 'html.parser'))
-
-print(soup)
-
-#quiz = re.findall('SetPreviewCard', soup)
-#print(quiz)
+#can delete later
+#attrs = driver.execute_script('var items = {}; for (index = 0; index < arguments[0].attributes.length; ++index) { items[arguments[0].attributes[index].name] = arguments[0].attributes[index].value }; return items;', ids)
+#print(attrs)
