@@ -1,4 +1,5 @@
 A running list of dependencies should be kept here. 
 As we finish the project, we can transfer this list to the beginning of the README.md file. 
 
-
+1. firefox browser
+2. selenium package
