@@ -1,8 +1,12 @@
 def url_quizlet(topic):
 	assert type(topic) == str, "Error: topic must be a string."
 	topicF = topic.replace(" ", "-")
-	url = "https://quizlet.com/search?query=" + topicF + "&type=sets&useOriginal="
+	url = "https://quizlet.com/search?query=" + topicF + "&type=sets&page=1&creator=teacher" #&useOriginal=
 	return url
+
+
+#def url_kahoot(topic):
+	
 
 
 
@@ -17,17 +21,22 @@ def webscrape_quizlet(url, setNum=1):
 
     #options
     setNum = str(setNum)
-    #url = "https://quizlet.com/search?query=cell-bio&type=sets&useOriginal="
 
+    from py_quizlet_kahoot.network import translation
+    translation.speed_warning()
 
     ###search page
     driver = webdriver.Firefox()
     driver.get(url)
 
-    cardset = WebDriverWait(driver, 20).until(EC.visibility_of_all_elements_located(('xpath', "//*[@class='SearchResultsPage-result' and @data-page-depth='" + setNum + "']//*[@class='AssemblyLink AssemblyLink--medium AssemblyLink--title']")))
-    cardseturl = cardset[0].get_attribute('href')
+    try:
+        cardset = WebDriverWait(driver, 20).until(EC.visibility_of_all_elements_located(('xpath', "//*[@class='SearchResultsPage-result' and @data-page-depth='" + setNum + "']//*[@class='AssemblyLink AssemblyLink--medium AssemblyLink--title']")))
+        cardseturl = cardset[0].get_attribute('href')
 
-    driver.quit()
+        driver.quit()
+    except:
+        driver.quit()
+        quit()
 
 
     ###card set page
