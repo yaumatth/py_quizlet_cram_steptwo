@@ -1,3 +1,11 @@
+def url_quizlet(topic):
+	assert type(topic) == str, "Error: topic must be a string."
+	topicF = topic.replace(" ", "-")
+	url = "https://quizlet.com/search?query=" + topicF + "&type=sets&useOriginal="
+	return url
+
+
+
 def webscrape_quizlet(url, setNum=1):
     from selenium import webdriver
     from selenium.webdriver.support.ui import WebDriverWait
