@@ -30,13 +30,14 @@ def webscrape_quizlet(url, setNum=1):
     driver.get(url)
 
     try:
-        cardset = WebDriverWait(driver, 20).until(EC.visibility_of_all_elements_located(('xpath', "//*[@class='SearchResultsPage-result' and @data-page-depth='" + setNum + "']//*[@class='AssemblyLink AssemblyLink--medium AssemblyLink--title']")))
+        cardset = WebDriverWait(driver, 45).until(EC.visibility_of_all_elements_located(('xpath', "//*[@class='SearchResultsPage-result' and @data-page-depth='" + setNum + "']//*[@class='AssemblyLink AssemblyLink--medium AssemblyLink--title']")))
         cardseturl = cardset[0].get_attribute('href')
 
         driver.quit()
     except:
         driver.quit()
-        quit()
+        print("Request timed out.")
+        return
 
 
     ###card set page
@@ -51,7 +52,7 @@ def webscrape_quizlet(url, setNum=1):
     cardlist = WebDriverWait(driver, 45).until(EC.visibility_of_all_elements_located(('xpath', "//*[@class='SetPageTerms-term' and @aria-label='Term']//*[@class='TermText notranslate lang-en']")))
 
     alltext = []
-    for i in range(len(cardlist)): #replace 3 with len(cardlist)
+    for i in range(len(cardlist)): 
         alltext.append(cardlist[i].text)
 
     driver.quit()
@@ -70,6 +71,8 @@ def webscrape_quizlet(url, setNum=1):
             answers.append(alltext[j])
 
     QAdataframe = pd.DataFrame({'questions': questions, 'answers': answers})
+    
+    print("Done.")
 
     return QAdataframe
 

@@ -1,14 +1,21 @@
-class Quiz_quizlet():
+class Quiz():
 	from py_quizlet_kahoot.network import webscraping
 	from py_quizlet_kahoot.core import quiz_methods
-	def __init__(self, topic, setNum = 1):
+	def __init__(self, topic, site = "Quizlet", setNum = 1):
 		self.topic = topic
-		self.setNum = str(setNum)
-		self.url = self.webscraping.url_quizlet(topic)
-		try:
-			self.__array = self.webscraping.webscrape_quizlet(self.url, self.setNum) #replace this to call QA object constructor... an array of QA objects should be stored here
-		except:
-			print("Sorry, no quizzes were found for:", self.topic)
+		self.site = site.lower()
+		self.setNum = str(setNum) #up to a max of 8
+		if self.site == "quizlet":
+			self.url = self.webscraping.url_quizlet(topic)
+			try:
+				self.__array = self.webscraping.webscrape_quizlet(self.url, self.setNum) #replace this to call QA object constructor... an array of QA objects should be stored here
+			except:
+				print("Sorry, no quizzes were found for:", self.topic)
+		elif self.site == "kahoot":
+			print("kahoot methods will go here")
+		
+		else:
+			raise Exception("Not a valid site name. Please enter either \'Quizlet\' or \'Kahoot\'. Default is \'Quizlet\'.")
 		self.quiz_length = len(self.__array.index)
 		self.QAs = self.quiz_methods.QA_constructor(self.__array, self.topic)
 
@@ -23,5 +30,13 @@ class QA():
 		self.question = question
 		self.answer = answer
 		self.topic = topic
+		self.mark = None
 	
-	#methods for setting quiz topic and `mark` (correct or incorrect)
+	def set_mark(value):
+	#0 for wrong, 1 for correct
+		self.mark = value
+	
+	
+	
+	
+
