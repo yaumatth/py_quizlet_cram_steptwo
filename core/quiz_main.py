@@ -8,7 +8,7 @@ class Quiz():
 		if self.site == "quizlet":
 			self.url = self.webscraping.url_quizlet(topic)
 			try:
-				self.__array = self.webscraping.webscrape_quizlet(self.url, self.setNum) #replace this to call QA object constructor... an array of QA objects should be stored here
+				self.__array = self.webscraping.webscrape_quizlet(self.url, self.setNum) 
 			except:
 				print("Sorry, no quizzes were found for:", self.topic)
 		elif self.site == "kahoot":

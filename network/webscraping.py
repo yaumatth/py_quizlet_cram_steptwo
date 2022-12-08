@@ -30,14 +30,21 @@ def webscrape_quizlet(url, setNum=1):
     driver.get(url)
 
     try:
-        cardset = WebDriverWait(driver, 45).until(EC.visibility_of_all_elements_located(('xpath', "//*[@class='SearchResultsPage-result' and @data-page-depth='" + setNum + "']//*[@class='AssemblyLink AssemblyLink--medium AssemblyLink--title']")))
+        cardset = WebDriverWait(driver, 15).until(EC.visibility_of_all_elements_located(('xpath', "//*[@class='SearchResultsPage-result' and @data-page-depth='" + setNum + "']//*[@class='AssemblyLink AssemblyLink--medium AssemblyLink--title']")))
+        
+        cardseturl = None
         cardseturl = cardset[0].get_attribute('href')
 
         driver.quit()
+    except NoSuchElementException:
+        driver.quit()
+        print("No quizzes found for user topic.")
+        return 
+        
     except:
         driver.quit()
         print("Request timed out.")
-        return
+        return 
 
 
     ###card set page
