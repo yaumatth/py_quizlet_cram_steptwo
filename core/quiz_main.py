@@ -1,7 +1,7 @@
 class Quiz():
 	from py_quizlet_kahoot.network import webscraping
 	from py_quizlet_kahoot.network import translation
-	from py_quizlet_kahoot.core import quiz_methods
+	from . import quiz_methods
 	
 	#checking internet connection
 	if translation.internet_checker():

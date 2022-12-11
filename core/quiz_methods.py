@@ -1,29 +1,29 @@
 def QA_constructor(QAdataframe, topic):
 	import pandas as pd
-	from py_quizlet_kahoot.core import quiz_main
+	from . import quiz_main
 	array = []
 	for i in range(len(QAdataframe.index)):
 		temp = quiz_main.QA(QAdataframe.loc[i, "questions"], QAdataframe.loc[i, "answers"], topic)
 		array.append(temp)
-		
+
 	return array
-	
+
 
 
 
 
 def take_the_quiz(quiz):
-	from py_quizlet_kahoot.core import quiz_main
+	from . import quiz_main
 	import time
 	assert isinstance(quiz, quiz_main.Quiz), "You can only call this function on a \'Quiz\' object!"
-	
+
 	length = quiz.quiz_length
 	array = quiz.QAs
 
 	print_options(quiz)
-	
+
 	input("Press Enter to start quiz... ")
-	
+
 	for i in range(length):
 		print("\nQuestion " + str(i+1) + ":")
 		print(array[i].question)
@@ -38,22 +38,22 @@ def take_the_quiz(quiz):
 			print("Sorry! That is not one of the allowed options.")
 			rightwrong = input("Type \'R\' for right, or \'W\' for wrong.").lower()
 		array[i].mark = rightwrong
-	
+
 	print("\nWell done! Quiz is finished.")
-	
+
 	#call plotting methods
 	if quiz.displayResults.lower() == "on":
 		results_plot(quiz)
-		
-		
-		
+
+
+
 
 def print_options(quiz):
 	import time
 	print("You are now taking a quiz with the following options:")
-	time.sleep(2)	
+	time.sleep(2)
 	print("Topic:", quiz.topic)
-	time.sleep(0.5)	
+	time.sleep(0.5)
 	print("Site:", quiz.site)
 	time.sleep(0.5)
 	print("Set number:", quiz.setNum)
@@ -61,21 +61,21 @@ def print_options(quiz):
 	print("Number of questions:", quiz.quiz_length)
 	time.sleep(0.5)
 
-	
+
 
 def results_plot(quiz):
 	import matplotlib.pyplot as plt
-	
+
 	length = quiz.quiz_length
 	array = []
 	for i in range(length):
 		array.append(quiz.QAs[i].mark)
-	
+
 	plotting = [array.count('r'), array.count('w')]
-	
+
 	print("Right:", plotting[0])
 	print("Wrong:", plotting[1])
-	print("Grade:", plotting[0]/length * 100, "%")
-	
+	print("Grade:", round(plotting[0]/length * 100), "%")
+
 	plt.pie(plotting, labels = ['Right', 'Wrong'])
 	plt.show()

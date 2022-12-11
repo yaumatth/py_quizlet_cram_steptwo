@@ -21,10 +21,10 @@ def webscrape_quizlet(url, setNum=1):
     from selenium.webdriver.common.keys import Keys
     import time
 
-    #options
-    setNum = str(setNum)
-
-    from py_quizlet_kahoot.network import translation
+    try:
+        import translation
+    except:
+        from . import translation
     translation.speed_warning()
 
     ###search page
@@ -32,7 +32,7 @@ def webscrape_quizlet(url, setNum=1):
     driver.get(url)
 
     try:
-        cardset = WebDriverWait(driver, 15).until(EC.visibility_of_all_elements_located(('xpath', "//*[@class='SearchResultsPage-result' and @data-page-depth='" + setNum + "']//*[@class='AssemblyLink AssemblyLink--medium AssemblyLink--title']")))
+        cardset = WebDriverWait(driver, 15).until(EC.visibility_of_all_elements_located(('xpath', "//*[@class='SearchResultsPage-result' and @data-page-depth='" + str(setNum) + "']//*[@class='AssemblyLink AssemblyLink--medium AssemblyLink--title']")))
         
         cardseturl = None
         cardseturl = cardset[0].get_attribute('href')
@@ -88,8 +88,10 @@ def webscrape_cram(url, setNum=1):
     import time
     import pandas as pd
     
-
-    from py_quizlet_kahoot.network import translation
+    try:
+        import translation
+    except:
+        from . import translation
     translation.speed_warning()
     
     ###search page

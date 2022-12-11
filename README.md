@@ -7,6 +7,8 @@ The purpose of this package is to enable users to take online quizzes from [Quiz
 
 **Please note the list of dependencies in the `dependencies.txt` file.**
 
+If at any time the webscraping functions timeout or fail, close the browser that was automatically opened, and run the command again. This usually fixes any issues. 
+
 A video demonstrating the use of this package can be found at [this link]().
 
 
@@ -25,7 +27,7 @@ Since this package requires an internet connection, it does not make sense to tr
 
 ## `speed_warning`
 
-Before beginning to webscrape the quiz, an internet speed warning is printed. This warning tells the user that "Functions requiring internet connection may take a while. Please do not interact with your device until the process is finished". This ensures a smooth quiz creation without any interuptions. 
+Before beginning to webscrape the quiz, an internet speed warning is printed. This warning tells the user that "Functions requiring internet connection may take a while. Please do not interact with your device until the process is finished". This ensures a smooth quiz creation without any interuptions.
 
 
 ## optionsthing
