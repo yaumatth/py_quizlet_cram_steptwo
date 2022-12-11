@@ -97,9 +97,8 @@ def webscrape_cram(url, setNum=1):
     driver.get(url)
 
     try:
-        cardset = WebDriverWait(driver, 15).until(EC.visibility_of_all_elements_located(('xpath', "//*[@class='searchResults']//*[@class='info']/h3/a[@href]")))
+        cardset = WebDriverWait(driver, 45).until(EC.visibility_of_all_elements_located(('xpath', "//*[@class='searchResults']//*[@class='info']/h3/a")))
         
-        cardseturl = None
         cardseturl = cardset[setNum-1].get_attribute('href')
 
         driver.quit()

@@ -15,7 +15,7 @@ def QA_constructor(QAdataframe, topic):
 def take_the_quiz(quiz):
 	from py_quizlet_kahoot.core import quiz_main
 	import time
-	assert isinstance(quiz, quiz_main.Quiz)
+	assert isinstance(quiz, quiz_main.Quiz), "You can only call this function on a \'Quiz\' object!"
 	
 	length = quiz.quiz_length
 	array = quiz.QAs
@@ -42,7 +42,8 @@ def take_the_quiz(quiz):
 	print("\nWell done! Quiz is finished.")
 	
 	#call plotting methods
-	results_plot(quiz)
+	if quiz.displayResults.lower() == "on":
+		results_plot(quiz)
 		
 		
 		
@@ -74,6 +75,7 @@ def results_plot(quiz):
 	
 	print("Right:", plotting[0])
 	print("Wrong:", plotting[1])
+	print("Grade:", plotting[0]/length * 100, "%")
 	
 	plt.pie(plotting, labels = ['Right', 'Wrong'])
 	plt.show()

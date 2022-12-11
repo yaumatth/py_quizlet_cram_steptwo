@@ -1,4 +1,10 @@
-#def internet_checker():
+def internet_checker():
+	import urllib.request
+	try:
+		urllib.request.urlopen('http://google.com') 
+		return True
+	except:
+		return False
 	
 
 
@@ -13,3 +19,7 @@ def speed_warning():
 	time.sleep(0.5)
 	print("1")
 	time.sleep(0.5)
+	
+	
+
+#def translate():
