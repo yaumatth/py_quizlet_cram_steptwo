@@ -8,3 +8,5 @@ As we finish the project, we can transfer this list to the beginning of the READ
 5. geckodriver
 6. matplotlib package
 7. urllib package
+8. googletrans==3.1.0a0
+

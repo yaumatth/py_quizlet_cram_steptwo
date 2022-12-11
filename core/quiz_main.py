@@ -9,19 +9,22 @@ class Quiz():
 	else:
 		raise Exception("Internet connection is required!")
 		
-	def __init__(self, topic, site = "Quizlet", setNum = 1, hint = "off", displayResults = "on"):
-		#matts options
+	def __init__(self, topic = "animals", site = "Quizlet", setNum = 1, language = "english", results = 	"off"):
+		self.languageDict = {"english": "en", "chinese": "zh-tw", "french": "fr"}
 		self.topic = topic
 		self.site = site.lower()
-		self.setNum = setNum #up to a max of 8
+		self.setNum = str(setNum) #up to a max of 8
+		self.language = self.languageDict[language]
+		self.results = results.lower()
+	def quiz_create(self):
 		if self.site == "quizlet":
-			self.url = self.webscraping.url_quizlet(topic)
+			self.url = self.webscraping.url_quizlet(self.topic)
 			try:
 				self.__array = self.webscraping.webscrape_quizlet(self.url, self.setNum) 
 			except:
 				print("Sorry, no quizzes were found for:", self.topic)
 		elif self.site == "cram":
-			self.url = self.webscraping.url_cram(topic)
+			self.url = self.webscraping.url_cram(self.topic)
 			try:
 				self.__array = self.webscraping.webscrape_cram(self.url, self.setNum) 
 			except:
@@ -30,8 +33,8 @@ class Quiz():
 			raise Exception("Not a valid site name. Please enter either \'Quizlet\' or \'Cram\'. Default is \'Quizlet\'.")
 		self.quiz_length = len(self.__array.index)
 		self.QAs = self.quiz_methods.QA_constructor(self.__array, self.topic)
-		self.hint = hint
-		self.displayResults = displayResults
+		#self.hint = hint
+		#self.displayResults = displayResults
 
 	
 	
