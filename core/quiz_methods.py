@@ -31,10 +31,18 @@ def take_the_quiz(quiz):
 		print("\nAnswer:")
 		print(array[i].answer)
 		time.sleep(2)
+		print("Did you get this question right or wrong?")
+		time.sleep(0.5)
+		rightwrong = input("Type \'R\' for right, or \'W\' for wrong.").lower()
+		while not ((rightwrong == "r") or (rightwrong == "w")):
+			print("Sorry! That is not one of the allowed options.")
+			rightwrong = input("Type \'R\' for right, or \'W\' for wrong.").lower()
+		array[i].mark = rightwrong
 	
 	print("\nWell done! Quiz is finished.")
 	
 	#call plotting methods
+	results_plot(quiz)
 		
 		
 		
@@ -53,3 +61,19 @@ def print_options(quiz):
 	time.sleep(0.5)
 
 	
+
+def results_plot(quiz):
+	import matplotlib.pyplot as plt
+	
+	length = quiz.quiz_length
+	array = []
+	for i in range(length):
+		array.append(quiz.QAs[i].mark)
+	
+	plotting = [array.count('r'), array.count('w')]
+	
+	print("Right:", plotting[0])
+	print("Wrong:", plotting[1])
+	
+	plt.pie(plotting, labels = ['Right', 'Wrong'])
+	plt.show()
