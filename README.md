@@ -7,7 +7,7 @@ The purpose of this package is to enable users to take online quizzes from [Quiz
 
 **Please note the list of dependencies in the `dependencies.txt` file.**
 
-If at any time the webscraping functions timeout or fail, close the browser that was automatically opened, and run the command again. This usually fixes any issues. 
+If at any time the webscraping functions timeout or fail, close the browser that was automatically opened, and run the command again. This usually fixes any issues.
 
 A video demonstrating the use of this package can be found at [this link]().
 
@@ -30,19 +30,26 @@ Since this package requires an internet connection, it does not make sense to tr
 Before beginning to webscrape the quiz, an internet speed warning is printed. This warning tells the user that "Functions requiring internet connection may take a while. Please do not interact with your device until the process is finished". This ensures a smooth quiz creation without any interuptions.
 
 
-## optionsthing
+## `options_setter`
 
 text
 
-After the options are set, the URL is built.
+After the options are set, the quiz is created via network functions.
 
-## `url_cram` and `url_quizlet`
+
+## `quiz_create`
+
+text
+
+
+### `url_cram` and `url_quizlet`
 
 In order to webscrape the questions, an appropriate search URL must be constructed. These functions take in the topic as a string, replace the spaces with dashes (Quizlet) or addition signs (Cram) and concatenate them with the default search URL.
 
 This URL is then passed to the webscraping functions.
 
-## `webscrape_quizlet` and `webscrape_cram`
+
+### `webscrape_quizlet` and `webscrape_cram`
 
 These functions take the URL from the previous functions and query the appropriate website using 'Selenium' headless browsing package (anti-robot server properties prevented traditional webscraping techniques). Once the page has finished loading, the function finds the link to the appropriate card set (based on `setNum`). This may take several moments, as the loading of the ads makes the process much slower (this is especially true for Cram quizzes).
 
@@ -51,7 +58,7 @@ Next, this link is used to open a second browser that is specific to the desired
 Lastly, the `dataframe_builder` function is called, which puts the two arrays of questions and answers into a single pandas dataframe, which is returned and assigned to the `Quiz()` attribute `__array`.
 
 
-## `QA_constructor`
+### `QA_constructor`
 
 The final step of quiz creation is to assign each question-answer pair in the `.__array` attribute to a separate `QA()` object. Each `QA()` object contains a single question, answer, quiz topic, and a `mark` attribute that stores an `r` if the user answered the question correct, or a `w` if the user answered the question incorrectly. After the `QA_constructor` creates the appropriate number of `QA()` objects, it assigns them to an array which is then stored inside the `Quiz()` attribute `.QAs`.
 

@@ -22,4 +22,14 @@ def speed_warning():
 	
 	
 
-#def translate():
+def translate(dataframe, language):
+	import pandas as pd
+	from googletrans import Translator
+	translator = Translator()
+	
+	for i in range(len(dataframe.index)):
+		dataframe.at[i, "questions"] = translator.translate(dataframe.loc[i, "questions"], dest=language).text
+		dataframe.at[i, "answers"] = translator.translate(dataframe.loc[i, "answers"], dest=language).text
+
+	return dataframe
+

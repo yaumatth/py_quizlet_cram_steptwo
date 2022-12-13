@@ -1,7 +1,3 @@
-import random 
-from IPython.display import clear_output
-
-
 def QA_constructor(QAdataframe, topic):
 	import pandas as pd
 	from . import quiz_main
@@ -19,17 +15,18 @@ def QA_constructor(QAdataframe, topic):
 def take_the_quiz(quiz):
 	from py_quizlet_kahoot.core import quiz_main
 	import time
+	from IPython.display import clear_output
 	assert isinstance(quiz, quiz_main.Quiz)
-	
+
 	length = quiz.quiz_length
 	array = quiz.QAs
 
 	print_options(quiz)
-	
-	
-	theInput = "hoho"
-	for i in range(quiz.quiz_length):         
-		print("Question " + str(i + 1) + " of " + str(quiz.quiz_length) + ": " + quiz.QAs[i].question + 
+
+
+	theInput = None
+	for i in range(quiz.quiz_length):
+		print("Question " + str(i + 1) + " of " + str(quiz.quiz_length) + ": " + quiz.QAs[i].question +
 		"\nPress enter for the answer, hint for hints, or exit to exit")
 		while theInput not in ["", "exit"]:
 			theInput = input()
@@ -37,29 +34,29 @@ def take_the_quiz(quiz):
 				print(hints(quiz.QAs[i].answer))
 		if theInput == "":
 			print("Answer:")
-			print(quiz.QAs[i].answer) 
+			print(quiz.QAs[i].answer)
 			if quiz.results == "on":
 				rightwrong = input("Did you understand this concept? (Y/N).").lower()
 				while not ((rightwrong == "y") or (rightwrong == "n")):
 					rightwrong = input("Please specify Y or N.").lower()
 				array[i].mark = rightwrong
 				theInput = "placeHolder"
-				clear_output(wait=True)                
+				clear_output(wait=True)
 			else:
 				theInput = input()
 				if theInput != "exit":
-					clear_output(wait=True)  
+					clear_output(wait=True)
 					theInput = "placeHolder"
 				elif theInput == "exit":
 					break
 		elif theInput == "exit":
 			break
 
-	#print("\nWell done! Quiz is finished.")
+	print("\nWell done! Quiz is finished.")
 
 	#call plotting methods
-	#if quiz.displayResults.lower() == "on":
-	#	results_plot(quiz)
+	if quiz.results.lower() == "on":
+		results_plot(quiz)
 
 
 
@@ -67,17 +64,21 @@ def take_the_quiz(quiz):
 def print_options(quiz):
 	import time
 	print("You are about to start the quiz with the following options...:")
-	time.sleep(2)	
+	time.sleep(2)
 	print("Your topic:", quiz.topic)
-	time.sleep(1)	
+	time.sleep(1)
 	print("With questions from:", quiz.site)
 	time.sleep(1)
 	print("Using question bank number:", quiz.setNum)
 	time.sleep(1)
 	print("Total number of questions:", quiz.quiz_length)
 	time.sleep(1)
+	print("Language:", quiz.language)
+	time.sleep(1)
+	print("With results:", quiz.results)
+	time.sleep(1)
 	print("Good luck!")
-	
+
 
 
 def results_plot(quiz):
@@ -88,7 +89,7 @@ def results_plot(quiz):
 	for i in range(length):
 		array.append(quiz.QAs[i].mark)
 
-	plotting = [array.count('r'), array.count('w')]
+	plotting = [array.count('y'), array.count('n')]
 
 	print("Right:", plotting[0])
 	print("Wrong:", plotting[1])
@@ -98,7 +99,12 @@ def results_plot(quiz):
 	plt.show()
 
 
+
+
+
 def hints(word):
+	import random
+	from IPython.display import clear_output
 	hintAnswer = []
 	if len(word.split(" ")) != 1:
 		randomLister = []
@@ -126,4 +132,3 @@ def hints(word):
 				theWord = theWord.replace(theWord[m], "_")
 		hintAnswer.append(theWord)
 	return " ".join(hintAnswer)
-        

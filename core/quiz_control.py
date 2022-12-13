@@ -1,13 +1,11 @@
-import py_quizlet_kahoot.core.quiz_main as main
-import py_quizlet_kahoot.core.quiz_methods as methods
-from IPython.display import clear_output
-
 def start():
+
+	import py_quizlet_kahoot.core.quiz_main as main
+	import py_quizlet_kahoot.core.quiz_methods as methods
+	from IPython.display import clear_output
 	theInput = ""
 
-	theQuiz = main.Quiz()
-
-
+	#main loop
 	while theInput.lower() != "exit":
 	    clear_output(wait=True)  
 	    theInput = input("You are about to start a quiz on " + theQuiz.topic + " from the site " + theQuiz.site
@@ -33,13 +31,13 @@ def start():
 	                theInput = input("Enter topic you want to be quizzed on: ")
 	                theQuiz.topic = theInput
 	            elif theInput.lower() == "site":
-	                theInput = input("Enter site you want questions from (Quizlet or Kahoot):")
-	                while theInput not in ["quizlet", "kahoot"]:
-	                    theInput = input("Please enter Quizlet or Kahoot")
+	                theInput = input("Enter site you want questions from (Quizlet or Cram):")
+	                while theInput not in ["quizlet", "cram"]:
+	                    theInput = input("Please enter Quizlet or Cram")
 	                if theInput.lower() == "quizlet":
 	                    theQuiz.site = "quizlet"
-	                elif theInput.lower() == "kahoot":
-	                    theQuiz.site = "kahoot"
+	                elif theInput.lower() == "cram":
+	                    theQuiz.site = "cram"
 	            elif theInput.lower() == "set":
 	                theInput = input("Please choose a question bank from 1 to 8:")
 	                while theInput not in ["1", "2", "3", "4", "5", "6", "7", "8"]:
