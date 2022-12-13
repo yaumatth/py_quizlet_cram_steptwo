@@ -13,7 +13,7 @@ def QA_constructor(QAdataframe, topic):
 
 
 def take_the_quiz(quiz):
-	from py_quizlet_kahoot.core import quiz_main
+	from py_quizlet_cram.core import quiz_main
 	import time
 	from IPython.display import clear_output
 	assert isinstance(quiz, quiz_main.Quiz)
@@ -27,7 +27,7 @@ def take_the_quiz(quiz):
 	theInput = None
 	for i in range(quiz.quiz_length):
 		print("Question " + str(i + 1) + " of " + str(quiz.quiz_length) + ": " + quiz.QAs[i].question +
-		"\nPress enter for the answer, hint for hints, or exit to exit")
+		"\nPress enter for the answer, hint for hints, or exit to exit. \n")
 		while theInput not in ["", "exit"]:
 			theInput = input()
 			if theInput == "hint":
@@ -36,9 +36,9 @@ def take_the_quiz(quiz):
 			print("Answer:")
 			print(quiz.QAs[i].answer)
 			if quiz.results == "on":
-				rightwrong = input("Did you understand this concept? (Y/N).").lower()
+				rightwrong = input("Did you understand this concept? (Y/N). \n").lower()
 				while not ((rightwrong == "y") or (rightwrong == "n")):
-					rightwrong = input("Please specify Y or N.").lower()
+					rightwrong = input("Please specify Y or N. \n").lower()
 				array[i].mark = rightwrong
 				theInput = "placeHolder"
 				clear_output(wait=True)
@@ -52,7 +52,7 @@ def take_the_quiz(quiz):
 		elif theInput == "exit":
 			break
 
-	print("\nWell done! Quiz is finished.")
+	print("\nWell done! Quiz is finished. \n")
 
 	#call plotting methods
 	if quiz.results.lower() == "on":
@@ -83,6 +83,10 @@ def print_options(quiz):
 
 def results_plot(quiz):
 	import matplotlib.pyplot as plt
+
+	if (quiz.results == "off"):
+		print("Cannot print results if results was set to \'off\'. \n")
+		return
 
 	length = quiz.quiz_length
 	array = []

@@ -1,0 +1,10 @@
+NOTE FOR THE TA
+
+Hello, 
+You may notice that this project does not have inheritance, even though it is required. I talked with Khalad, and he said that we could leave it out, given that we replaced it with another function. Since our project has many more functions than required, this should be a non-issue.
+
+
+
+Here is the email from Khalad:
+
+"Again, I am not sure how you are doing the web scraping, however, if you think that inheritance would make the project more complex, feel free to proceed without inheritance. However, leave a note for the TA that you talked to me about removing inheritance and replacing it with another function or something similar."

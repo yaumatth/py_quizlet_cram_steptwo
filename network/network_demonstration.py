@@ -1,6 +1,9 @@
 ##Network subpackage demonstration
 #Jonah Edmundson
 
+#run this file in the terminal as:
+#python network_demonstration.py
+
 import pandas as pd
 
 
@@ -64,6 +67,8 @@ tl.speed_warning()
 
 #translate
 print("\n\ntranslate")
-print("")
+print("takes in a 2 column dataframe labelled \'questions\' and \'answers\' and returns the same dataframe with translated text. also takes in the language to translate to")
+print("translating to french....")
+print(tl.translate(df, 'fr'))
 
 
