@@ -9,7 +9,7 @@ The purpose of this package is to enable users to take online quizzes from [Quiz
 
 If at any time the webscraping functions timeout or fail, close the browser that was automatically opened, and run the command again. This usually fixes any issues.
 
-A video demonstrating the use of this package can be found at [this link]().
+A video demonstrating the use of this package can be found at [this link](https://www.youtube.com/watch?v=Mh1LKVNMkew).
 
 
 # Creating a Quiz() object
