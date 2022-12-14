@@ -8,3 +8,7 @@ You may notice that this project does not have inheritance, even though it is re
 Here is the email from Khalad:
 
 "Again, I am not sure how you are doing the web scraping, however, if you think that inheritance would make the project more complex, feel free to proceed without inheritance. However, leave a note for the TA that you talked to me about removing inheritance and replacing it with another function or something similar."
+
+
+
+*Also note that while the workload was distributed equally, the commits may not look equal because Matt would often send me code over Discord for me to paste in the various files. 
