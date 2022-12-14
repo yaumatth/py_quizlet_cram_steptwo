@@ -41,13 +41,13 @@ def take_the_quiz(quiz):
 					rightwrong = input("Please specify Y or N. \n").lower()
 				array[i].mark = rightwrong
 				if rightwrong == "y" or rightwrong == "n":
-					clear_output(wait=True)				
+					clear_output(wait=False)				
 					theInput = "placeHolder"
 
 			else:
 				theInput = input()
 				if theInput != "exit":
-					clear_output(wait=True)
+					clear_output(wait=False)
 					theInput = "placeHolder"
 				elif theInput == "exit":
 					break
