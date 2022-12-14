@@ -40,8 +40,10 @@ def take_the_quiz(quiz):
 				while not ((rightwrong == "y") or (rightwrong == "n")):
 					rightwrong = input("Please specify Y or N. \n").lower()
 				array[i].mark = rightwrong
-				theInput = "placeHolder"
-				clear_output(wait=True)
+				if rightwrong == "y" or rightwrong == "n":
+					clear_output(wait=True)				
+					theInput = "placeHolder"
+
 			else:
 				theInput = input()
 				if theInput != "exit":
@@ -83,24 +85,27 @@ def print_options(quiz):
 
 def results_plot(quiz):
 	import matplotlib.pyplot as plt
+	
+	array = []
+	length = quiz.quiz_length	
+	for i in range(length):
+		array.append(quiz.QAs[i].mark)	
 
 	if (quiz.results == "off"):
 		print("Cannot print results if results was set to \'off\'. \n")
 		return
+	if array.count('y') + array.count('n') == 0:
+		pass
+	else:
 
-	length = quiz.quiz_length
-	array = []
-	for i in range(length):
-		array.append(quiz.QAs[i].mark)
+		plotting = [array.count('y'), array.count('n')]
 
-	plotting = [array.count('y'), array.count('n')]
+		print("Right:", plotting[0])
+		print("Wrong:", plotting[1])
+		print("Grade:", round(plotting[0]/length * 100), "%")
 
-	print("Right:", plotting[0])
-	print("Wrong:", plotting[1])
-	print("Grade:", round(plotting[0]/length * 100), "%")
-
-	plt.pie(plotting, labels = ['Right', 'Wrong'])
-	plt.show()
+		plt.pie(plotting, labels = ['Right', 'Wrong'])
+		plt.show()
 
 
 

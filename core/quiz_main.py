@@ -17,8 +17,8 @@ class Quiz():
 		self.language = self.languageDict[language]
 		self.results = results.lower()
 
-		#options_setter
-		options_setter(self)
+		#user_control
+		user_control(self)
 
 
 
@@ -71,7 +71,7 @@ class QA():
 
 
 
-def options_setter(theQuiz):
+def user_control(theQuiz):
 	import py_quizlet_cram.core.quiz_methods as quiz_methods
 	from IPython.display import clear_output
 	theInput = ""
