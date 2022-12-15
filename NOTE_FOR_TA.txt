@@ -11,4 +11,4 @@ Here is the email from Khalad:
 
 
 
-*Also note that while the workload was distributed equally, the commits may not look equal because Matt would often send me code over Discord for me to paste in the various files. 
+*Also note that while the workload was distributed equally, the commits may not look equal because Matt would often send me code over Discord for me to paste in the various files.  
