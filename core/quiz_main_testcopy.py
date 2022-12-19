@@ -1,7 +1,15 @@
 class Quiz():
-	from py_quizlet_cram.network import webscraping
-	from py_quizlet_cram.network import translation
-	from . import quiz_methods
+	import sys
+	import os
+	import re
+	packagepath = os.path.abspath(__file__)
+	packagepath = re.sub(r'\/[^\/]*\/{1}[^\/]*(\.).*', '', packagepath)
+	if not packagepath in sys.path:
+		sys.path.append(packagepath)
+
+	from network import webscraping
+	from network import translation
+	from . import quiz_methods_testcopy
 
 	#checking internet connection
 	if translation.internet_checker():
@@ -47,7 +55,7 @@ def quiz_create(theQuiz):
 		translation.translate(theQuiz.__array, theQuiz.language)
 
 	theQuiz.quiz_length = len(theQuiz.__array.index)
-	theQuiz.QAs = theQuiz.quiz_methods.QA_constructor(theQuiz.__array, theQuiz.topic)
+	theQuiz.QAs = theQuiz.quiz_methods_testcopy.QA_constructor(theQuiz.__array, theQuiz.topic)
 
 
 
@@ -69,7 +77,7 @@ class QA():
 
 
 def user_control(theQuiz):
-	import py_quizlet_cram.core.quiz_methods as quiz_methods
+	import py_quizlet_cram.core.quiz_methods_testcopy as quiz_methods_testcopy
 	from IPython.display import clear_output
 	theInput = ""
 
@@ -81,7 +89,7 @@ def user_control(theQuiz):
 	                   + "\n   Settings (change settings)\n   Exit (quit)\n")
 		if theInput == "start":
 	        	quiz_create(theQuiz)
-	        	quiz_methods.take_the_quiz(theQuiz)
+	        	quiz_methods_testcopy.take_the_quiz(theQuiz)
 	        	theInput = "exit"
 		if theInput.lower() == "settings":
 			while theInput.lower() != "exit":

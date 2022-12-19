@@ -6,8 +6,8 @@ packagepath = re.sub(r'\/[^\/]*\/{1}[^\/]*(\.).*', '', packagepath)
 if not packagepath in sys.path:
 	sys.path.append(packagepath)
 
-from core import quiz_methods as methods
-from core import quiz_main
+from core import quiz_methods_testcopy as methods
+from core import quiz_main_testcopy
 import unittest
 import pandas as pd
 import random as rand
@@ -42,7 +42,7 @@ class TestMethods(unittest.TestCase):
         self.assertNotEqual(type(methods.QA_constructor(self.QADataFrame, "Computer Science")), type(self.QADataFrame))
 
         #Assert array contains QA types
-        self.assertEqual(type(methods.QA_constructor(self.QADataFrame, "Computer Science")[1]), quiz_main.QA)
+        self.assertEqual(type(methods.QA_constructor(self.QADataFrame, "Computer Science")[1]), quiz_main_testcopy.QA)
 
         #Assert that the questions and answers from the dataframe input are correctly converted
         self.assertEqual(methods.QA_constructor(self.QADataFrame, "Computer Science")[1].question, "Software")

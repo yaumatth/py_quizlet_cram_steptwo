@@ -1,15 +1,19 @@
 import unittest
 
-#import all test classes
-try:
-    from unittesting import translation_testing
-except:
-    import translation_testing
+#importing stuff
+import sys
+import os
+import re
+packagepath = os.path.abspath(__file__)
+packagepath = re.sub(r'\/[^\/]*\/{1}[^\/]*(\.).*', '', packagepath)
+if not packagepath in sys.path:
+	sys.path.append(packagepath)
 
-try:
-    from unittesting import webscraping_testing
-except:
-    import webscraping_testing
+#import all test classes
+from unittesting import translation_testing
+from unittesting import webscraping_testing
+from unittesting import TestQuizCoreOne
+from unittesting import TestQuizCoreTwo
 
 
 #run everything
@@ -21,6 +25,8 @@ def my_suite():
     suite.addTest(unittest.makeSuite(translation_testing.translation))
     suite.addTest(unittest.makeSuite(translation_testing.testing_speed_warning))
     suite.addTest(unittest.makeSuite(webscraping_testing.url_builders))
+    suite.addTest(unittest.makeSuite(TestQuizCoreTwo.TestMethods))
+    suite.addTest(unittest.makeSuite(TestQuizCoreOne.TestMain))
     suite.addTest(unittest.makeSuite(webscraping_testing.webscraping_funcs))
 
     runner = unittest.TextTestRunner()

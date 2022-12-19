@@ -1,6 +1,19 @@
 class Quiz():
-	from py_quizlet_cram.network import webscraping
-	from py_quizlet_cram.network import translation
+	#importing stuff
+	import sys
+	import os
+	import re
+	packagepath = os.path.abspath(__file__)
+	packagepath = re.sub(r'\/[^\/]*\/{1}[^\/]*(\.).*', '', packagepath)
+	if not packagepath in sys.path:
+		sys.path.append(packagepath)
+	try:
+		from py_quizlet_cram.network import webscraping
+		from py_quizlet_cram.network import translation
+	except:
+		from network import webscraping
+		from network import translation
+
 	from . import quiz_methods
 
 	#checking internet connection

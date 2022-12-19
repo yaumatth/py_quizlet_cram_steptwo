@@ -6,7 +6,7 @@ packagepath = re.sub(r'\/[^\/]*\/{1}[^\/]*(\.).*', '', packagepath)
 if not packagepath in sys.path:
 	sys.path.append(packagepath)
 
-from core import quiz_methods as methods
+from core import quiz_methods_testcopy as methods
 from core import quiz_main_testcopy
 from core import quiz_main_testcopy as main
 

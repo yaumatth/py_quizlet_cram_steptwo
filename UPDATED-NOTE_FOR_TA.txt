@@ -1,0 +1,52 @@
+NOTE FOR THE TA
+
+Hello, 
+We had some issues running Selenium (webscraping functions) on the GitHub Actions ubuntu server, which results in some unit tests failing. To compensate for this, we provide screenshots of local runs of these same files, for which the tests do not fail (see ./unittesting/htmlcov/index.html).
+
+For CI, we used GitHub Actions instead of Travis-CI. 
+
+Also note that some of the unit tests for the network subpackage do not have enough assert statements... this is because I made extra tests, so if you add them together, there should be enough to pass the requirements. 
+
+Also note that the files tested in the core subpackage are not quiz_main and quiz_methods, but rather quiz_main_testcopy and quiz_methods_testcopy. We did this in order to bypass the user input issues so that we could just pass input variables to the functions directly.
+
+The coverage for our project is below 75%. This is because the creation of our main class Quiz() requires lots of user input. So, we avoided testing this and tested other functions instead. I think this should be okay...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OLD NOTE:
+Hello, 
+You may notice that this project does not have inheritance, even though it is required. I talked with Khalad, and he said that we could leave it out, given that we replaced it with another function. Since our project has many more functions than required, this should be a non-issue.
+
+
+
+Here is the email from Khalad:
+
+"Again, I am not sure how you are doing the web scraping, however, if you think that inheritance would make the project more complex, feel free to proceed without inheritance. However, leave a note for the TA that you talked to me about removing inheritance and replacing it with another function or something similar."
+
+
+
+*Also note that while the workload was distributed equally, the commits may not look equal because Matt would often send me code over Discord for me to paste in the various files.  
