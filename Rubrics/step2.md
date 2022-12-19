@@ -15,7 +15,7 @@ You will work on the same modules and functions that you develop in your project
 ## Specific Expectations (20 marks)
 Now it's time to start testing the package that you developed in project step 1. Specific expectations for this step are:
 #### Unit Testing Requirements (14 marks):
- - [12 marks] Create at least six test classes (in separate files) for the six modules that you developed in project step 1.
+ - [12 marks] Create at least four test classes (in separate files) for the four modules that you developed in project step 1.
     - [8 marks] Each test class should have at least two test cases and each test case should contain at least four assertion statements.
     - [4 marks] Each test class should use the `setup()`, `tearDown()`, `setUpClass(cls)`, and `tearDownClass(cls)` methods to initialize values appropriately.
  - [2 marks] Create a test suite to hold the collection of test classes that you developed in the previous step. Check the test suite to ensure that it calls the test classes properly.
