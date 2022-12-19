@@ -1,7 +1,10 @@
 import unittest
 
 #import all test classes
-import translation_testing
+try:
+    import translation_testing
+else:
+    from unittesting import translation_testing
 #from TestModule2 import TestSub
 
 #run everything
