@@ -8,26 +8,8 @@ if not packagepath in sys.path:
 
 
 class Quiz():
-<<<<<<< HEAD
-	#importing stuff
-	import sys
-	import os
-	import re
-	packagepath = os.path.abspath(__file__)
-	packagepath = re.sub(r'\/[^\/]*\/{1}[^\/]*(\.).*', '', packagepath)
-	if not packagepath in sys.path:
-		sys.path.append(packagepath)
-	try:
-		from py_quizlet_cram.network import webscraping
-		from py_quizlet_cram.network import translation
-	except:
-		from network import webscraping
-		from network import translation
-
-=======
 	from network import webscraping
 	from network import translation
->>>>>>> 8dc871098bde24c68c881dd2e5cf94cb4a1788ee
 	from . import quiz_methods
 
 	#checking internet connection

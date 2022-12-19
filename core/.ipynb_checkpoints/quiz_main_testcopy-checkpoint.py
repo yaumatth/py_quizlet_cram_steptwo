@@ -7,27 +7,10 @@ if not packagepath in sys.path:
 	sys.path.append(packagepath)
 
 
-class Quiz():
-<<<<<<< HEAD
-	#importing stuff
-	import sys
-	import os
-	import re
-	packagepath = os.path.abspath(__file__)
-	packagepath = re.sub(r'\/[^\/]*\/{1}[^\/]*(\.).*', '', packagepath)
-	if not packagepath in sys.path:
-		sys.path.append(packagepath)
-	try:
-		from py_quizlet_cram.network import webscraping
-		from py_quizlet_cram.network import translation
-	except:
-		from network import webscraping
-		from network import translation
 
-=======
+class Quiz():
 	from network import webscraping
 	from network import translation
->>>>>>> 8dc871098bde24c68c881dd2e5cf94cb4a1788ee
 	from . import quiz_methods
 
 	#checking internet connection
@@ -36,8 +19,8 @@ class Quiz():
 	else:
 		raise Exception("Internet connection is required!")
 
-	def __init__(self, topic="", site = "Quizlet", setNum = 1, language = "english", results = "on"):
-		self.topic = input("\nPlease enter a topic that you want to be quizzed on: ")
+	def __init__(self, topic="Biology", site = "Quizlet", setNum = 1, language = "english", results = "on"):
+		self.topic = topic
 		self.languageDict = {"english": "en", "chinese": "zh-tw", "french": "fr"}
 		self.site = site.lower()
 		self.setNum = setNum #up to a max of 8
@@ -45,7 +28,7 @@ class Quiz():
 		self.results = results.lower()
 
 		#user_control
-		user_control(self)
+		#user_control(self)
 
 
 
@@ -89,9 +72,6 @@ class QA():
 		self.topic = topic
 		self.mark = None
 
-	def set_mark(value):
-	#0 for wrong, 1 for correct
-		self.mark = value
 
 
 

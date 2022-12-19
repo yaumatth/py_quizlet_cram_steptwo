@@ -1,4 +1,15 @@
+import sys
+import os
+import re
+packagepath = os.path.abspath(__file__)
+packagepath = re.sub(r'\/[^\/]*\/{1}[^\/]*(\.).*', '', packagepath)
+if not packagepath in sys.path:
+	sys.path.append(packagepath)
+
+
+
 class Quiz():
+<<<<<<< HEAD
 	import sys
 	import os
 	import re
@@ -10,6 +21,11 @@ class Quiz():
 	from network import webscraping
 	from network import translation
 	from . import quiz_methods_testcopy
+=======
+	from network import webscraping
+	from network import translation
+	from . import quiz_methods
+>>>>>>> 8dc871098bde24c68c881dd2e5cf94cb4a1788ee
 
 	#checking internet connection
 	if translation.internet_checker():
@@ -51,7 +67,7 @@ def quiz_create(theQuiz):
 
 	#translate
 	if theQuiz.language != 'en':
-		from py_quizlet_cram.network import translation
+		from network import translation
 		translation.translate(theQuiz.__array, theQuiz.language)
 
 	theQuiz.quiz_length = len(theQuiz.__array.index)
@@ -77,7 +93,11 @@ class QA():
 
 
 def user_control(theQuiz):
+<<<<<<< HEAD
 	import py_quizlet_cram.core.quiz_methods_testcopy as quiz_methods_testcopy
+=======
+	import core.quiz_methods as quiz_methods
+>>>>>>> 8dc871098bde24c68c881dd2e5cf94cb4a1788ee
 	from IPython.display import clear_output
 	theInput = ""
 
