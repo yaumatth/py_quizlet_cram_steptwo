@@ -1,6 +1,8 @@
 # py-quizlet-cram
 A package for taking Quizlet and Cram quizzes in Python.
 
+![workflow status](https://github.com/yaumatth/py_quizlet_cram_steptwo/actions/workflows/unittesting.yml/badge.svg)
+
 # Introduction
 
 The purpose of this package is to enable users to take online quizzes from [Quizlet](https://quizlet.com/) and [Cram](https://www.cram.com/) in Jupyter Notebook. Quizzes are web scraped from these websites based on the provided topic and card set number. Questions and answers are shown interatively, with the user selecting whether they got each question right or wrong. A pie chart showing the quiz results is plotted upon quiz completion.

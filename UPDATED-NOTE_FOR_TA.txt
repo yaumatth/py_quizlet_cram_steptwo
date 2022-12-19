@@ -3,7 +3,7 @@ NOTE FOR THE TA
 Hello, 
 We had some issues running Selenium (webscraping functions) on the GitHub Actions ubuntu server, which results in some unit tests failing. To compensate for this, we provide screenshots of local runs of these same files, for which the tests do not fail (see ./unittesting/htmlcov/index.html).
 
-For CI, we used GitHub Actions instead of Travis-CI. 
+For CI, we used GitHub Actions instead of Travis-CI. The dependencies.sh file is used by GitHub Actions to install the dependencies.
 
 Also note that some of the unit tests for the network subpackage do not have enough assert statements... this is because I made extra tests, so if you add them together, there should be enough to pass the requirements. 
 
