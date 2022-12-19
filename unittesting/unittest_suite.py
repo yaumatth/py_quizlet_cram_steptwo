@@ -2,9 +2,9 @@ import unittest
 
 #import all test classes
 try:
-    import translation_testing
-except:
     from unittesting import translation_testing
+except:
+    import translation_testing
 #from TestModule2 import TestSub
 
 #run everything
