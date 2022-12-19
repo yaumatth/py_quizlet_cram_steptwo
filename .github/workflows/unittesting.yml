@@ -9,11 +9,5 @@ jobs:
       - run: chmod +x install_dependencies.sh
       - run: ./install_dependencies.sh
       - run: python -m pip install coverage
-      - run: python -m coverage run ./unittesting/quiz_main_testing.py
-      - run: python -m coverage report
-      - run: python -m coverage run ./unittesting/quiz_methods_testing.py
-      - run: python -m coverage report
-      - run: python -m coverage run ./unittesting/webscraping_testing.py
-      - run: python -m coverage report
-      - run: python -m coverage run ./unittesting/translation_testing.py
+      - run: python -m coverage run ./unittesting/unittest_suite.py
       - run: python -m coverage report
