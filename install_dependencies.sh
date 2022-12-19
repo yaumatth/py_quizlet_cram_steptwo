@@ -7,3 +7,4 @@ pip install webdrivermanager #geckodriver
 conda install urllib3
 pip install googletrans==3.1.0a0
 pip install IPython
+pip install docker
