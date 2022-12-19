@@ -48,7 +48,7 @@ class TestMethods(unittest.TestCase):
         self.assertEqual(methods.QA_constructor(self.QADataFrame, "Computer Science")[1].question, "Software")
         self.assertEqual(methods.QA_constructor(self.QADataFrame, "Computer Science")[1].answer, "Set of instructions that tells the hardware what to do. It is what guides the hardware and tells it how to accomplish each task.")
 
-        #Assert that two (random) different answers in the QA array are not duplicates (i.e. same as each other)
+        #Assert that two (random) different answers and questions in the QA array are not duplicates (i.e. same as each other)
         self.assertNotEqual(methods.QA_constructor(self.QADataFrame, "ComputerScience")[self.numOne].answer, methods.QA_constructor(self.QADataFrame, "Computer Science")[self.numTwo].answer)
         self.assertNotEqual(methods.QA_constructor(self.QADataFrame, "ComputerScience")[self.numOne].question, methods.QA_constructor(self.QADataFrame, "Computer Science")[self.numTwo].question)
 
