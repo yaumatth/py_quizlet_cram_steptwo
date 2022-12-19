@@ -1,6 +1,6 @@
 #!/bin/sh
 
-apt install firefox
+sudo apt install firefox
 conda install selenium
 conda install geckodriver
 conda install urllib3
