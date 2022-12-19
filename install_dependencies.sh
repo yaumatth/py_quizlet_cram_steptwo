@@ -1,7 +1,7 @@
 #!/bin/sh
 
 sudo apt install firefox
-conda install selenium
+pip install selenium
 pip install pandas
 pip install webdrivermanager #geckodriver
 conda install urllib3
